@@ -1,0 +1,19 @@
+from .models import Vk
+
+#...
+
+
+# def...
+
+def hidden_post(request, pk):
+    '''Функция которая будет скрывать по id пост Хабра'''
+    # здесь возможно другой метод у класса Vk
+    Vk.hidden(pk)
+    return redirect('vk:vk')
+
+
+def delete_post(request):
+    '''Функция удаляющая все новости из базы данных, после удаления и послудующем
+    парсинге постов все новости снова будут видны'''
+    Vk.objects.all().delete()
+    return redirect('vk:vk')
